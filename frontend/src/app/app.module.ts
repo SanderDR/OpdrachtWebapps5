@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { FormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import{HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -9,10 +9,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -20,13 +22,14 @@ const appRoutes: Routes = [
     AppComponent,
     NavbarComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

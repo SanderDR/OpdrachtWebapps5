@@ -1,0 +1,38 @@
+<form [formGroup]='user' (ngSubmit)='onSubmit()' class="form-horizontal mt-5" role="form">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h2>Login</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 field-label-responsive">
+            <label for="Username">Gebruikersnaam</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                    <input type="text" formControlName='username' class="form-control"
+                             autofocus>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 field-label-responsive">
+            <label for="password">password:</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                    <input type="password" formControlName='password' class="form-control" >
+                </div>
+            </div>
+        </div>
+      </div>
+    <button type='submit' [disabled]='!user.valid' class="btn btn-success">log in<i class="fa fa-sign-in"></i></button>
+    <div *ngIf='errorMsg' class='ui red label'>{{errorMsg}}</div>
+  </form>
