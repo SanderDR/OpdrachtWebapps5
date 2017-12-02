@@ -1,4 +1,3 @@
-let dotenv= require('dotenv').config({path: __dirname + 'app-env.env'});
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -15,7 +14,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/2dehandsdb', { useMongoClient:true});
+mongoose.connect(process.env.DATABASE_URI, { useMongoClient:true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,10 +27,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(passport.initialize());
 
 app.use('/', index);
-app.use('/API/users', users)
+app.use('/API/users', users);
+
+app.all('*', (req, res) => { 
+	const indexFile ='${path.join(__dirname, "dist")}/index.html'; 
+	res.status(200).sendFile(indexFile);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
