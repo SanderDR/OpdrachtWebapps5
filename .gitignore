@@ -1,7 +1,6 @@
 # Gitignore for angular files
 
 # compiled output
-/dist
 /tmp
 /out-tsc
 
