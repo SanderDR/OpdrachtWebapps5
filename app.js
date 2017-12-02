@@ -34,7 +34,7 @@ app.use('/', index);
 app.use('/API/users', users);
 
 app.all('*', (req, res) => { 
-	const indexFile ='${path.join(__dirname, "dist")}/index.html'; 
+	const indexFile =`${path.join(__dirname, 'dist')}/index.html`; 
 	res.status(200).sendFile(indexFile);
 });
 
