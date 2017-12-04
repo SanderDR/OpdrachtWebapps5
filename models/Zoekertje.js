@@ -5,7 +5,7 @@ var ZoekertjeSchema = new mongoose.Schema({
     description: String,
     price:  Number,
     location: String,
-    from: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    from: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     pic: String
 })
 

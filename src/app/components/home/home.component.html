@@ -1,9 +1,22 @@
 <div class="container">
     
     <div class="jumbotron">
-    <h1>Home Page</h1>
-    <p>To Do - inhoud enzo</p>
+    <h1>2dehands</h1>
+    <p>Hier kan jij jouw tweede hands artikelen te koop aanbieden.</p>
+    <p>Je kan ook op zoek gaan naar voordelige koopjes.</p>
+    <p>Gewoon zoeken wat je wilt een reageren ! zo simpel.</p>
+    <p>Voor zoekertjes aan te bieden of te reageren moet je wel inloggen/registreren</p>
+    
 
     </div>
-    
-    </div>
+    <div class="card-deck">
+        <div *ngFor="let zoekertje of zoekertjes" style="display:block" class="card col-md-6 col-lg-4">
+          <img class="card-img-top" [src]="'data:image/jpg;base64,'+zoekertje.pic" height="60%" width="100%" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">{{zoekertje.name}}</h4>
+            <p class="card-text">{{zoekertje.description}}</p>
+            <p class="card-text"><small class="text-muted">€ {{zoekertje.price}}</small></p>
+          </div>
+        </div>
+      </div>
+</div>

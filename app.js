@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(passport.initialize());
 
 app.use('/API/users', users);
-app.use('/API/Zoekertje', zoekertjes);
+app.use('/API', zoekertjes);
 
 
 app.all('*', (req, res) => { 

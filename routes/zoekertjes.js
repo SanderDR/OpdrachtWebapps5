@@ -11,14 +11,24 @@ router.post('/zoekertje', function(req, res, next){
     return res.status(400).json({message: 'Please fill out all fields'});
   }
   var zoekertje = new Zoekertje();
-  zoekertje.name = req.body.username;
-  zoekertje.description = req.body.name;
-  zoekertje.price = req.body.email
+  zoekertje.name = req.body.name;
+  zoekertje.description = req.body.description;
+  zoekertje.price = req.body.price
   zoekertje.location = req.body.location;
   zoekertje.pic = req.body.pic;
-  zoekertje.from = User.find({username: req.body.username});
-  zoekertje.save(function (err){
-    if(err){ return next(err); }
+  User.find({'username' : req.body.from}, function(err, docs){
+    let user = docs[0]._id;
+    zoekertje.from = user;
+    zoekertje.save(function (err){
+      if(err){ return next(err); }
+      return res.json({added: true})
+    });
+  });
+});
+
+router.get('/zoekertjes', function(req, res, next){
+  Zoekertje.find({}, function (err, zoekertjes) {
+    res.send(zoekertjes);
   });
 });
 

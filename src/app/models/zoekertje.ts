@@ -1,13 +1,13 @@
 import {User} from './user'
 
 export class Zoekertje {
-    private _zoekertjeId: string;
-    private _name: string;
-    private _description: string;
-    private _price: Number;
-    private _location: string;
-    private _from: User;
-    private _pic: string;
+    public _zoekertjeId: string;
+    public _name: string;
+    public _description: string;
+    public _price: Number;
+    public _location: string;
+    public _from: User;
+    public _pic: string;
 
     static fromJSON(json): Zoekertje {
         const rec = new Zoekertje(json.name, json.description, json.price, json.location, json.from, json.pic);

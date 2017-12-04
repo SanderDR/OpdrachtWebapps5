@@ -32,7 +32,7 @@ export class AuthService {
       .map(res => res.json()).map(res => {
         const token = res.token;
         if (token) {
-          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token}));
           this._user$.next(username);
           return true;
         } else {
