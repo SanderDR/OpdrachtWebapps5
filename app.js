@@ -7,9 +7,10 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 require('./models/User');
+require('./models/Zoekertje');
 require('./config/passport');
 
-var index = require('./routes/index');
+var zoekertjes = require('./routes/zoekertjes');
 var users = require('./routes/users');
 
 var app = express();
@@ -30,8 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(passport.initialize());
 
-app.use('/', index);
 app.use('/API/users', users);
+app.use('/API/Zoekertje', zoekertjes);
+
 
 app.all('*', (req, res) => { 
 	const indexFile =`${path.join(__dirname, 'dist')}/index.html`; 

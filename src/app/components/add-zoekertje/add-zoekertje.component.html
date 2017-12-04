@@ -1,0 +1,102 @@
+<form [formGroup]='zoekertje' (ngSubmit)="onSubmit()" class="form-horizontal mt-5" role="form">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h2>Maak zoekertje</h2>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 field-label-responsive">
+        <label for="name">Naam</label>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                <input type="text" formControlName='name' class="form-control"
+                         autofocus>
+            </div>
+        </div>
+    </div>
+    <div *ngIf='zoekertje.get("name").errors && user.get("name").touched'class=" col-md-4">
+      <div class="alert alert-danger">
+          naam is verplicht.
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 field-label-responsive">
+        <label for="description">Description</label>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                <textarea rows="5" formControlName='description' class="form-control"
+                         autofocus>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 field-label-responsive">
+        <label for="price">price</label>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                <input type="number" steps="0.01" formControlName='price' class="form-control">
+            </div>
+        </div>
+    </div>
+    <div *ngIf='zoekertje.get("price").errors && zoekertje.get("price").touched'class=" col-md-4">
+      <div class="alert alert-danger">
+          Een prijs is verplicht en mag niet negatief zijn.
+        </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-2 field-label-responsive">
+      <label for="location">location</label>
+  </div>
+  <div class="col-md-6">
+      <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+              <input type="text" formControlName='location' class="form-control">
+          </div>
+      </div>
+  </div>
+  <div *ngIf='zoekertje.get("location").errors && zoekertje.get("location").touched'class=" col-md-4">
+    <div class="alert alert-danger">
+        Een locatie is verplicht
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2 field-label-responsive">
+      <label for="pic">Foto</label>
+  </div>
+  <div class="col-md-6">
+      <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+              <input type="file" formControlName='pic' class="form-control">
+          </div>
+      </div>
+  </div>
+  <div *ngIf='zoekertje.get("location").errors && zoekertje.get("location").touched'class=" col-md-4">
+    <div class="alert alert-danger">
+        Een locatie is verplicht
+      </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <button type="submit" [disabled]='!zoekertje.valid' class="btn btn-success"><i class="fa fa-user-plus"></i> Add zoekertje</button>
+    </div>
+</div>
+  </form>

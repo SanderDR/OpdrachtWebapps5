@@ -10,11 +10,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddZoekertjeComponent } from './components/add-zoekertje/add-zoekertje.component';
+import {ZoekertjesService} from './services/zoekertjes.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'addZoekertje', component: AddZoekertjeComponent}
 ];
 
 @NgModule({
@@ -23,7 +26,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     RegisterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    AddZoekertjeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -31,7 +35,7 @@ const appRoutes: Routes = [
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, ZoekertjesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
