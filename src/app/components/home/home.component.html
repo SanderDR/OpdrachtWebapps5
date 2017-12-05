@@ -9,14 +9,27 @@
     
 
     </div>
-    <div class="card-deck">
-        <div *ngFor="let zoekertje of zoekertjes" style="display:block" class="card col-md-6 col-lg-4">
-          <img class="card-img-top" [src]="'data:image/jpg;base64,'+zoekertje.pic" height="60%" width="100%" alt="Card image cap">
-          <div class="card-block">
-            <h4 class="card-title">{{zoekertje.name}}</h4>
-            <p class="card-text">{{zoekertje.description}}</p>
-            <p class="card-text"><small class="text-muted">€ {{zoekertje.price}}</small></p>
+    <div class="card text-center">
+      <div class="card-header">
+          <div class="input-group">
+              <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+              </span>
+              <input type="text" class="form-control" placeholder="Zoek zoekertje">
           </div>
-        </div>
       </div>
+      <div class="row ml-3 mr-3 mt-2 mb-4">
+        <div *ngFor="let zoekertje of zoekertjes" class="col-sm-4 d-flex" >
+          <div class="card mt-3">
+                <img class="card-img-top" [src]="'data:image/jpg;base64,'+zoekertje.pic" height="60%" width="100%" alt="Card image cap">                
+                <div class="card-block">
+                    <h4 class="card-title">{{zoekertje.name}}</h4>
+                    <button class="btn btn-info mb-3"><i class="fa fa-eye"></i> View More</button>                    
+                  </div>
+                <div class="card-footer text-muted">
+                   € {{zoekertje.price}}
+                  </div>
+            </div>
+        </div>
+</div>
 </div>
