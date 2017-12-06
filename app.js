@@ -8,10 +8,12 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 require('./models/User');
 require('./models/Zoekertje');
+require('./models/Reactie');
 require('./config/passport');
 
 var zoekertjes = require('./routes/zoekertjes');
 var users = require('./routes/users');
+var reacties = require('./routes/reacties');
 
 var app = express();
 
@@ -33,6 +35,7 @@ app.use(passport.initialize());
 
 app.use('/API/users', users);
 app.use('/API', zoekertjes);
+app.use('/API/reacties', reacties);
 
 
 app.all('*', (req, res) => { 

@@ -16,6 +16,7 @@ router.post('/zoekertje', function(req, res, next){
   zoekertje.price = req.body.price
   zoekertje.location = req.body.location;
   zoekertje.pic = req.body.pic;
+  zoekertje.comments = [];
   User.find({'username' : req.body.from}, function(err, docs){
     let user = docs[0]._id;
     zoekertje.from = user;
@@ -30,6 +31,12 @@ router.get('/zoekertjes', function(req, res, next){
   Zoekertje.find({}, function (err, zoekertjes) {
     res.send(zoekertjes);
   });
+});
+
+router.get('/zoekertje/:id', function(req, res, next){
+  Zoekertje.findById(req.params.id, function (err, zoekertje) {
+     res.send(zoekertje);
+     } );
 });
 
 module.exports = router;

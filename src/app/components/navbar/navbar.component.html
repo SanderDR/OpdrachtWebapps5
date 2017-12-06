@@ -14,12 +14,12 @@
             <li class="nav-item">
                 <a class="nav-link" *ngIf=!authService.loggedIn() routerLink="/register" routerLinkActive="active">Register</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#" *ngIf=authService.loggedIn() (click)="authService.logout()" routerLinkActive="active">Logout</a>
-                </li>
             <li class="nav-item">
               <a class="nav-link" *ngIf=authService.loggedIn() [routerLink]="['/addZoekertje']" routerLinkActive="active">Zoekertje Toevoegen</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" *ngIf=authService.loggedIn() (click)="authService.logout()" routerLinkActive="active">Logout</a>
+              </li>
           </ul>
         </div>
       </nav>

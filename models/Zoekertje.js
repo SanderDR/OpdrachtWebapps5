@@ -6,7 +6,8 @@ var ZoekertjeSchema = new mongoose.Schema({
     price:  Number,
     location: String,
     from: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    pic: String
+    pic: String,
+    comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Reactie'}]
 })
 
 mongoose.model('Zoekertje', ZoekertjeSchema);

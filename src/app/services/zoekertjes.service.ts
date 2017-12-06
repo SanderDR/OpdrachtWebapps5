@@ -25,4 +25,9 @@ export class ZoekertjesService {
     }));
   }
 
+  getZoekertje(id: string){
+    return this.http.get(`${this._url}/zoekertje/${id}`)
+    .map(res => res.json());
+  }
+
 }
