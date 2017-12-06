@@ -1,18 +1,18 @@
-<h1 class="text-center">{{zoekertje._name}}</h1>
+<h1 class="text-center">{{zoekertje.name}}</h1>
 <div class="row">
   <div class="col-md-4 offset-md-4">
-    <img class="img-thumbnail img-responsive mt-5" [src]="'data:image/jpg;base64,'+zoekertje._pic" alt="Card image cap">                    
+    <img class="img-thumbnail img-responsive mt-5" [src]="'data:image/jpg;base64,'+zoekertje.pic" alt="Card image cap">                    
   </div>
 </div>
 <div class="row">
 <div class="card col-md-8 offset-md-2 mt-5">
   <div class="card-block">
       <h6 class="card-subtitle text-muted">Omschrijving:</h6>
-      <p class="card-text">{{zoekertje._description}}</p>
+      <p class="card-text">{{zoekertje.description}}</p>
       <h6 class="card-subtitle text-muted">Locatie</h6>
-      <p class="card-text">{{zoekertje._location}}</p>      
+      <p class="card-text">{{zoekertje.location}}</p>      
       <h6 class="card-subtitle text-muted">Prijs:</h6>
-      <p class="card-text">€ {{zoekertje._price}}</p>            
+      <p class="card-text">€ {{zoekertje.price}}</p>            
     </div>
 </div>
 </div>
