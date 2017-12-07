@@ -53,11 +53,17 @@ export class AddZoekertjeComponent implements OnInit {
    }
 
   onSubmit(){
+    if(this.zoekertje.value.pic === ''){
+      this.isInvalidFoto = true;
+      this.zoekertje.controls["pic"].markAsTouched();
+    }
+    if(!this.isInvalidFoto){
     this.zoekertjesService.addZoekertje(this.zoekertje.value.name, this.zoekertje.value.description,  this.zoekertje.value.price, this.zoekertje.value.location, this.zoekertje.value.from, this.zoekertje.value.pic).subscribe(val => {
       if (val) {
         this.router.navigate(['/']);
       }
     });
+  }
   }
 
 }

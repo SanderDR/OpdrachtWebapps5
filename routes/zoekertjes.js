@@ -46,4 +46,10 @@ router.get('/zoekertje/:id', function(req, res, next){
   });
 });
 
+router.get('/zoekertjes/:id', function(req, res, next){
+  Zoekertje.find({'from': req.params.id}, function(err, zoekertjes){
+    res.send(zoekertjes);
+  })
+});
+
 module.exports = router;

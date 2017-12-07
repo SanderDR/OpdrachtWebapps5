@@ -31,8 +31,9 @@ export class AuthService {
     return this.http.post(`${this._url}/login`, { username: username, password: password })
       .map(res => res.json()).map(res => {
         const token = res.token;
+        const id = res.id;
         if (token) {
-          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token}));
+          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token, id:id}));
           this._user$.next(username);
           return true;
         } else {
@@ -53,8 +54,9 @@ export class AuthService {
     return this.http.post(`${this._url}/register`, {email: email, name: name, username: username, password: password })
       .map(res => res.json()).map(res => {
         const token = res.token;
+        const id = res.id;
         if (token) {
-          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: res.token }));
+          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: res.token, id:id }));
           this._user$.next(username);
           return true;
         } else {

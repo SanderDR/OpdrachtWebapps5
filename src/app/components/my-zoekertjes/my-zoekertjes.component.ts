@@ -5,11 +5,11 @@ import {Router} from '@angular/router'
 import {ZoekertjesPipe} from '../../pipes/zoekertjes.pipe';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-my-zoekertjes',
+  templateUrl: './my-zoekertjes.component.html',
+  styleUrls: ['./my-zoekertjes.component.css']
 })
-export class HomeComponent implements OnInit {
+export class MyZoekertjesComponent implements OnInit {
 
   private _zoekertjes: Zoekertje[] = [];
   public searchText: string;
@@ -19,14 +19,14 @@ export class HomeComponent implements OnInit {
   constructor(private zoekertjesService: ZoekertjesService, private router: Router) { }
 
   ngOnInit() {
-    this.zoekertjesService.getAll().subscribe(zoekertjes => {
+    this.zoekertjesService.getAllFromUser(JSON.parse(localStorage.getItem('currentUser')).id).subscribe(zoekertjes => {
       this._zoekertjes = zoekertjes;
       this.totalZoekertjes = this._zoekertjes.length;
     });
   }
 
   get zoekertjes(){
-    return this._zoekertjes.slice((this.page-1)*9,this.page*9);
+    return this._zoekertjes.slice((this.page-1)*10,this.page*10);
   }
 
 }

@@ -9,10 +9,17 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  public current: string;
+
   constructor(public authService: AuthService,
     private router: Router) { }
 
   ngOnInit() {
+    if(this.authService.loggedIn()){
+      this.current = JSON.parse(localStorage.getItem('currentUser')).username;
+    };
   }
+
+  
 
 }

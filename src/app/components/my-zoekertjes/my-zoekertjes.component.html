@@ -1,0 +1,30 @@
+<div class="container">
+  
+    <div class="input-group col-md-6 offset-md-3 mt-5">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+            </span>
+            <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Zoek zoekertje">
+    </div>
+    <div *ngIf="zoekertjes.length >0">
+    <div class="row mr-3 mt-2 mb-4">
+      <div *ngFor="let zoekertje of zoekertjes | zoekertjes : searchText" class="col-md-12" >
+          <div class="card mt-3">                
+              <div class="card-block col-md-12" role="button" [routerLink]="['/zoekertje', zoekertje._id]">
+                  <h4 class="card-title">{{zoekertje.name}}</h4> 
+                  <hr>  
+                  <h6 class="card-subtitle text-muted">{{zoekertje.description}}</h6>
+                  <br>
+                  <p class="card-text">{{zoekertje.comments.length}} reactie's</p>               
+                </div>
+          </div>
+      </div>
+  </div>
+<ngb-pagination [collectionSize]="totalZoekertjes" [(page)]="page" [pageSize]="10"></ngb-pagination>
+</div>
+<div *ngIf="zoekertjes.length === 0">
+<div class="alert alert-info mt-5 col-md-6 offset-md-3">
+    <strong>Info!</strong> Uw hebt nog geen zoekertjes geplaatst.
+  </div>
+</div>
+</div>

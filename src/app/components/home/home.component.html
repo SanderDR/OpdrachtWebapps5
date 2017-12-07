@@ -1,6 +1,6 @@
 <div class="container">
     
-    <div class="jumbotron">
+    <div class="mt-5 jumbotron">
     <h1>2dehands</h1>
     <p>Hier kan jij jouw tweede hands artikelen te koop aanbieden.</p>
     <p>Je kan ook op zoek gaan naar voordelige koopjes.</p>
@@ -9,7 +9,7 @@
     
 
     </div>
-    <div class="card text-center">
+    <div class="card text-center mb-5">
       <div class="card-header">
           <div class="input-group">
               <span class="input-group-btn">
@@ -21,7 +21,7 @@
       <div class="row ml-3 mr-3 mt-2 mb-4">
         <div *ngFor="let zoekertje of zoekertjes | zoekertjes : searchText" class="col-sm-4 d-flex" >
           <div class="card mt-3">
-                <img class="card-img-top img-responsive" [src]="'data:image/jpg;base64,'+zoekertje.pic" height="auto" width="100%" alt="Card image cap">                
+                <img class="card-img-top img-responsive" [src]="'data:image/jpg;base64,'+zoekertje.pic" height="auto" width="100%" alt="Card image cap"> 
                 <div class="card-block">
                     <h4 class="card-title">{{zoekertje.name}}</h4>
                     <button class="btn btn-info mb-3" [routerLink]="['/zoekertje', zoekertje._id]"><i class="fa fa-eye"></i> View More</button>                    
@@ -32,4 +32,6 @@
             </div>
         </div>
 </div>
+</div>
+<ngb-pagination [collectionSize]="totalZoekertjes" [(page)]="page" [pageSize]="9"></ngb-pagination>
 </div>

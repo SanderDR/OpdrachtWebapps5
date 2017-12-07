@@ -30,4 +30,12 @@ export class ZoekertjesService {
     .map(res => res.json());
   }
 
+  getAllFromUser(id:string){
+    return this.http.get(`${this._url}/zoekertjes/${id}`)
+    .map(res => res.json().map(res =>{
+      return res;
+    }));
+  }
+
+
 }

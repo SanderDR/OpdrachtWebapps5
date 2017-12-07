@@ -17,7 +17,7 @@ router.post('/register', function(req, res, next){
   user.setPassword(req.body.password)
   user.save(function (err){
     if(err){ return next(err); }
-    return res.json({token: user.generateJWT()})
+    return res.json({token: user.generateJWT(), id: user._id})
   });
 });
 
@@ -29,7 +29,7 @@ router.post('/login', function(req, res, next){
   passport.authenticate('local', function(err, user, info){
     if(err){ return next(err); }
     if(user){ 
-      return res.json({token: user.generateJWT()});
+      return res.json({token: user.generateJWT(), id: user._id});
     } else {
       return res.status(401).json(info);
     }

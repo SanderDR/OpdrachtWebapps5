@@ -4,6 +4,8 @@ import {RouterModule, Routes} from '@angular/router';
 import { ReactiveFormsModule} from '@angular/forms';
 import{HttpModule} from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -17,13 +19,15 @@ import {ZoekertjesService} from './services/zoekertjes.service';
 import { ZoekertjesPipe } from './pipes/zoekertjes.pipe';
 import { ZoekertjeComponent } from './components/zoekertje/zoekertje.component';
 import { ReactiesService } from './services/reacties.service';
+import { MyZoekertjesComponent } from './components/my-zoekertjes/my-zoekertjes.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'addZoekertje', component: AddZoekertjeComponent, canActivate:[AuthGuard]},
-  {path: 'zoekertje/:id', component: ZoekertjeComponent}  
+  {path: 'zoekertje/:id', component: ZoekertjeComponent},
+  {path: 'myZoekertjes', component: MyZoekertjesComponent}  
 ];
 
 @NgModule({
@@ -35,14 +39,16 @@ const appRoutes: Routes = [
     LoginComponent,
     AddZoekertjeComponent,
     ZoekertjesPipe,
-    ZoekertjeComponent
+    ZoekertjeComponent,
+    MyZoekertjesComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot()
   ],
   providers: [AuthService, ZoekertjesService,ReactiesService, AuthGuard],
   bootstrap: [AppComponent]
