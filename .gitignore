@@ -1,9 +1,12 @@
 # Gitignore for angular files
 
 # compiled output
+/dist
 /tmp
 /out-tsc
-/dist
+
+# Semantic files
+/semantic
 
 # dependencies
 /node_modules
