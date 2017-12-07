@@ -34,9 +34,16 @@ router.get('/zoekertjes', function(req, res, next){
 });
 
 router.get('/zoekertje/:id', function(req, res, next){
-  Zoekertje.findById(req.params.id, function (err, zoekertje) {
-     res.send(zoekertje);
-     } );
+  Zoekertje.findById(req.params.id).populate({
+    path: 'comments',
+    model: 'Reactie',
+    populate: {
+      path: 'by',
+      model: 'User'
+    }
+  }).exec(function (err, zoekertje) {
+    res.send(zoekertje);
+  });
 });
 
 module.exports = router;

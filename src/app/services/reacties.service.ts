@@ -9,23 +9,12 @@ export class ReactiesService {
 
   constructor(private http: Http) {}
 
-  addReactie(inhoud: string, when: string, by: string, zoekertjeId: string): Observable<boolean>{
-    console.log(when);
-    return this.http.post(`${this._url}/add`, { inhoud: inhoud, when: when, by: by, zoekertjeId: zoekertjeId})
+  addReactie(inhoud: string, by: string, zoekertjeId: string): Observable<boolean>{
+    return this.http.post(`${this._url}/add`, { inhoud: inhoud, by: by, zoekertjeId: zoekertjeId})
     .map(res => res.json()).map(res =>{
       if(res.added){
         return true;
       }
     });
-  }
-
-  getReactie(id: string){
-    return this.http.get(`${this._url}/get/${id}`, )
-    .map(res => res.json());
-  }
-
-  getCommenter(id: string){
-    return this.http.get(`${this._url}/Commenter/${id}`, )
-    .map(res => res.json());
   }
 }

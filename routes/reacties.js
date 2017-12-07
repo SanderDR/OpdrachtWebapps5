@@ -13,7 +13,7 @@ router.post('/add', function(req, res, next){
   }
   var reactie = new Reactie();
   reactie.inhoud = req.body.inhoud;
-  reactie.when = req.body.when;
+  reactie.when = new Date();
   User.find({'username' : req.body.by}, function(err, docs){
     let user = docs[0]._id;
     reactie.by = user;

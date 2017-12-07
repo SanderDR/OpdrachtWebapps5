@@ -1,11 +1,11 @@
-<h1 class="text-center">{{zoekertje.name}}</h1>
+<h1 *ngIf="zoekertje" class="text-center">{{zoekertje.name}}</h1>
 <div class="row">
   <div class="col-md-4 offset-md-4">
-    <img class="img-thumbnail img-responsive mt-5" [src]="'data:image/jpg;base64,'+zoekertje.pic" alt="Card image cap">                    
+    <img *ngIf="zoekertje" class="img-thumbnail img-responsive mt-5" [src]="'data:image/jpg;base64,'+zoekertje.pic" alt="Card image cap">                    
   </div>
 </div>
 <div class="row">
-<div class="card col-md-8 offset-md-2 mt-5">
+<div *ngIf="zoekertje" class="card col-md-8 offset-md-2 mt-5">
   <div class="card-block">
       <h6 class="card-subtitle text-muted">Omschrijving:</h6>
       <p class="card-text">{{zoekertje.description}}</p>
@@ -17,21 +17,25 @@
 </div>
 </div>
 <h3 class="text-center mt-3 mb-2">Reactie's:</h3>
-<div class="row" *ngIf="comments.length > 0">
-        <div *ngFor="let comment of comments" class="card col-md-8 offset-md-2 mt-1 mb-1">
-        <div class="card-block">  
+<div *ngIf="zoekertje">
+<div class="row" *ngIf="zoekertje.comments.length > 0">
+        <div *ngFor="let comment of zoekertje.comments" class="card col-md-8 offset-md-2 mt-1 mb-1">
+        <div *ngIf="comment" class="card-block">  
             <p class="card-text">{{comment.inhoud}}</p>  
-            <h6 class="card-subtitle text-muted">by {{comment.by.username}} on {{comment.when}}</h6>          
+            <h6 class="card-subtitle text-muted">by {{comment.by.username}} on {{comment.when | date:'short'}}</h6>          
           </div>
         </div>
 </div>
-<div *ngIf="comments.length === 0" class="row">
+</div>
+<div *ngIf="zoekertje">
+<div *ngIf="zoekertje.comments.length === 0" class="row">
   <div class="card-block col-md-8 offset-md-2">
     <h4 class="card-title">Er zijn nog geen reactie's</h4>          
   </div>
 </div>
+</div>
 <h3 class="text-center mt-3 mb-2">Reageer:</h3>
-<div class="alert alert-danger mt-3" *ngIf=!authService.loggedIn()>
+<div class="alert alert-danger col-md-8 offset-md-2 mt-3" *ngIf=!authService.loggedIn()>
     <strong>Sorry!</strong> U moet ingelogd zijn om te kunnen reageren.
 </div>
 <form class="mt-3" *ngIf=authService.loggedIn() [formGroup]='reactie' (ngSubmit)="onSubmit()">

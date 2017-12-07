@@ -3,7 +3,7 @@ import {User} from './user'
 export class Reactie {
     public _reactieId: string;
     public _inhoud: string;
-    public _when: string;
+    public _when: Date;
     public _by: User;
 
     static fromJSON(json): Reactie {
@@ -12,7 +12,7 @@ export class Reactie {
         return rec;
     }
 
-    constructor(inhoud: string, when: string, by: User) {
+    constructor(inhoud: string, when: Date, by: User) {
         this._inhoud = inhoud;
         this._when = when;
         this._by = by;
