@@ -28,16 +28,4 @@ router.post('/add', function(req, res, next){
   });
 });
 
-router.get('/get/:id', function(req, res, next){
-  Reactie.findById(req.params.id, function (err, reactie) {
-     res.send(reactie);
-     } );
-});
-
-router.get('/commenter/:id', function(req, res, next){
-  User.findById(req.params.id, function (err, user) {
-     res.send(user);
-     } );
-});
-
 module.exports = router;
